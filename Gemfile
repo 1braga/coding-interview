@@ -34,6 +34,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'simplecov'
 end
 
 group :development do
@@ -50,3 +51,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'fiddle'
 gem 'observer'
 gem 'mutex_m'
+gem 'sidekiq'

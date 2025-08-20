@@ -1,34 +1,48 @@
-version: "3.9"
-
 services:
   db:
     image: postgres:15
     container_name: coding_interview_db
     restart: always
-    enviroment:
+    environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: coding_interview_development
     ports:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
   web:
     build: .
-    container_name: coding_interview_web
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0 -p 3000"
     volumes:
       - .:/app
+      - bundle_data:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
       - db
-    enviroment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_HOST: db
-      RAILS_ENV: development
+      - redis
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/coding_interview_development
+      REDIS_URL: redis://redis:6379/0
 
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/coding_interview_development
+      REDIS_URL: redis://redis:6379/0
 volumes:
   db_data:
+  bundle_data:

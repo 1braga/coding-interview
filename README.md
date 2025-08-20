@@ -48,7 +48,7 @@ Sistema desenvolvido para avaliação técnica com Ruby on Rails. O projeto abra
 ---
 
 ## ▶️ Como rodar
->> Pré-requisitos: Docker e docker-compose instalados
+> Pré-requisitos: Docker e docker-compose instalados
 
 1. Clone o repositório
 ```
@@ -59,13 +59,24 @@ cd coding-interview
 ```
 docker-compose up --build
 ```
-3. Crie o banco de dados
+3. Instale as gems
+```
+docker-compose run web bundle install
+```
+4. Crie o banco de dados de desenvolvimento
 ```
 docker-compose run web rails db:create db:migrate
 ```
-4. Abra o navegador e acesse
+5. Crie o banco de dados de teste
+```
+docker-compose run web rails db:create db:migrate RAILS_ENV=test
+```
+6. Abra o navegador e acesse
    http://localhost:3000
 
 ## Como testar
-
-**preencher como testar**
+1. Execute os testes
+```
+docker-compose run web bundle exec rspec
+```
+2. Veja a cobertura de testes em coverage/index.html

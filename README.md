@@ -48,9 +48,23 @@ Sistema desenvolvido para avaliação técnica com Ruby on Rails. O projeto abra
 ---
 
 ## ▶️ Como rodar
+>> Pré-requisitos: Docker e docker-compose instalados
 
-**preencher como rodar**
-
+1. Clone o repositório
+```
+git clone https://github.com/1braga/coding-interview.git
+cd coding-interview
+```
+2. Suba os containers
+```
+docker-compose up --build
+```
+3. Crie o banco de dados
+```
+docker-compose run web rails db:create db:migrate
+```
+4. Abra o navegador e acesse
+   http://localhost:3000
 
 ## Como testar
 

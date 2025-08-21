@@ -55,13 +55,13 @@ Sistema desenvolvido para avaliação técnica com Ruby on Rails. O projeto abra
 git clone https://github.com/1braga/coding-interview.git
 cd coding-interview
 ```
-2. Suba os containers
-```
-docker-compose up --build
-```
-3. Instale as gems
+2. Instale as gems
 ```
 docker-compose run web bundle install
+```
+3. Suba os containers
+```
+docker-compose up --build
 ```
 4. Crie o banco de dados de desenvolvimento
 ```
@@ -71,8 +71,7 @@ docker-compose run web rails db:create db:migrate
 ```
 docker-compose run web rails db:create db:migrate RAILS_ENV=test
 ```
-6. Abra o navegador e acesse
-   http://localhost:3000
+6. Abra o navegador e acesse http://localhost:3000
 
 ## Como testar
 1. Execute os testes

@@ -1,2 +1,12 @@
-<h1>Companies#show</h1>
-<p>Find me in app/views/companies/show.html.erb</p>
+<h1 class="mb-3"><%= @company.name %></h1>
+<div class="mb-3">
+  <%= link_to "Editar", edit_company_path(@company), class: "btn btn-secondary" %>
+  <%= link_to "Voltar", companies_path, class: "btn btn-outline-secondary" %>
+</div>
+
+<h3>Usuários desta empresa</h3>
+<ul class="list-group">
+  <% @company.users.each do |user| %>
+    <li class="list-group-item"><%= user.display_name %> (@<%= user.username %>)</li>
+  <% end %>
+</ul>

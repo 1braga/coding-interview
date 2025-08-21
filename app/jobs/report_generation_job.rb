@@ -2,7 +2,7 @@ class ReportGenerationJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    generate_users_tweet_report
+    generate_users_tweets_report
     generate_companies_users_report
   end
 

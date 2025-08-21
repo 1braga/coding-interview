@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_19_183725) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_20_193613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,6 +25,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_19_183725) do
     t.text "body"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["created_at"], name: "index_tweets_on_created_at"
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 

@@ -1,0 +1,11 @@
+<div data-controller="autocomplete">
+  <input type="text"
+         placeholder="Buscar usuários..."
+         data-autocomplete-target="input"
+         data-action="input->autocomplete#search"
+         class="border rounded p-2 w-full" />
+
+  <ul data-autocomplete-target="results"
+      class="border rounded mt-1 bg-white shadow-md max-h-40 overflow-y-auto">
+  </ul>
+</div>
